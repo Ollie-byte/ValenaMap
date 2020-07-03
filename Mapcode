@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html style="height: 100%; margin: 0;">
+<head>
+<title>Map of Valena</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link rel="stylesheet" href="scripts/leaflet/leaflet.css">
+
+<script src="scripts/leaflet/leaflet.js"></script>
+
+</head>
+<body style="height: 100%; margin: 0;">
+
+<div id="map" style="width: 100%; height: 100%; background: #888888; margin: 0;"></div>
+
+<script type="text/javascript">
+
+
+var map = L.map('map').setView([0, 0], 3);
+
+L.tileLayer('map/valena/{z}/{x}/{y}.png', {
+	minZoom: 1, 
+	maxZoom: 4, 
+	continuousWorld: false, 
+	noWrap: true,
+	}).addTo(map);
+
+//Markers and popups
+var marker = L.marker([0, 0], {
+	draggable:true,
+}).addTo(map);
+marker.bindPopup('<b>Our Heros!</b>');
+
+map.on('click', function(ev) {
+    alert(ev.latlng); // ev is an event object (MouseEvent in this case)
+});
+
+</script>
+
+</body>
+</html>
